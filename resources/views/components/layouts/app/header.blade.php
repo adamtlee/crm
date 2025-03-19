@@ -17,6 +17,12 @@
                 </flux:navbar.item>
             </flux:navbar>
 
+            <flux:navbar class="-mb-px max-lg:hidden">
+                <flux:navbar.item icon="film" :href="route('videos.index')" :current="request()->routeIs('videos.index')" wire:navigate>
+                    {{ __('Videos') }}
+                </flux:navbar.item>
+            </flux:navbar>
+
             <flux:spacer />
 
             <flux:navbar class="mr-1.5 space-x-0.5 py-0!">
@@ -105,6 +111,14 @@
             </flux:navlist>
 
             <flux:spacer />
+
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Platform')">
+                    <flux:navlist.item icon="layout-grid" :href="route('videos.index')" :current="request()->routeIs('videos.index')" wire:navigate>
+                    {{ __('Videos') }}
+                    </flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
 
             <flux:navlist variant="outline">
                 <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
