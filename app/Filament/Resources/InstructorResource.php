@@ -44,6 +44,10 @@ class InstructorResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('full_name')
+                    ->label('Full Name')
+                    ->formatStateUsing(fn (Instructor $record): string => "{$record->first_name} {$record->last_name}")
+                    ->searchable(['first_name', 'last_name']),
                 Tables\Columns\TextColumn::make('first_name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('last_name')

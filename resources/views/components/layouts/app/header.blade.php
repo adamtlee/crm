@@ -33,8 +33,7 @@
                     <flux:navbar.item
                         class="h-10 max-lg:hidden [&>div>svg]:size-5"
                         icon="folder-git-2"
-                        href="https://github.com/laravel/livewire-starter-kit"
-                        target="_blank"
+                        href="#"
                         :label="__('Repository')"
                     />
                 </flux:tooltip>
@@ -42,8 +41,7 @@
                     <flux:navbar.item
                         class="h-10 max-lg:hidden [&>div>svg]:size-5"
                         icon="book-open-text"
-                        href="https://laravel.com/docs/starter-kits"
-                        target="_blank"
+                        href="#"
                         label="Documentation"
                     />
                 </flux:tooltip>
@@ -121,11 +119,11 @@
             </flux:navlist>
 
             <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
+                <flux:navlist.item icon="folder-git-2" href="#" target="_blank">
                 {{ __('Repository') }}
                 </flux:navlist.item>
 
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits" target="_blank">
+                <flux:navlist.item icon="book-open-text" href="#" target="_blank">
                 {{ __('Documentation') }}
                 </flux:navlist.item>
             </flux:navlist>

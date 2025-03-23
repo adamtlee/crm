@@ -59,10 +59,10 @@ class EventResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('instructor.id')
+                Tables\Columns\TextColumn::make('instructor.first_name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('member.id')
+                Tables\Columns\TextColumn::make('member.first_name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
