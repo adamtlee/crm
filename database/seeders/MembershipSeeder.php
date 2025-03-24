@@ -14,20 +14,20 @@ class MembershipSeeder extends Seeder
     public function run(): void
     {
         DB::table('memberships')->insert([
-            'name' => 'Mixed Martial Arts',
-            'description' => 'Dedicate MMA Program - Coaches approval needed',
+            'name' => 'MMA',
+            'description' => 'Professional Mix Martial Arts Program',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
         DB::table('memberships')->insert([
-            'name' => 'Brazilian Jiu-Jitsu',
-            'description' => 'Submission Grappling, Offering both Gi and No Gi',
+            'name' => 'Grappling',
+            'description' => 'Brazilian Jiu Jitsu, and Wrestling',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
         DB::table('memberships')->insert([
-            'name' => 'Muay Thai',
-            'description' => 'The are to 8 limbs',
+            'name' => 'Striking',
+            'description' => 'Boxing, Kickboxing, Muay Thai',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
