@@ -20,13 +20,15 @@ class InstructorFactory extends Factory
      */
     public function definition(): array
     {
+        $specializationNames = ['Muay Thai', 'Boxing', 'Kickboxing', 'MMA', 'Brazilian Jiu Jitsu'];
+
         return [
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'birth_date' => fake()->date(),
-            'email_address' => fake()->word(),
-            'phone_number' => fake()->phoneNumber(),
-            'specialization' => fake()->word(),
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'birth_date' => $this->faker->date(),
+            'email_address' => $this->faker->unique()->safeEmail,
+            'phone_number' => $this->faker->phoneNumber,
+            'specialization' => $this->faker->randomElement($specializationNames),
         ];
     }
 }

@@ -108,8 +108,6 @@
                 </flux:navlist.group>
             </flux:navlist>
 
-            <flux:spacer />
-
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')">
                     <flux:navlist.item icon="layout-grid" :href="route('videos.index')" :current="request()->routeIs('videos.index')" wire:navigate>
@@ -117,6 +115,7 @@
                     </flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
+            <flux:spacer />
 
             <flux:navlist variant="outline">
                 <flux:navlist.item icon="folder-git-2" href="#" target="_blank">

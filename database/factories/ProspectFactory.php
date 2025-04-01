@@ -21,11 +21,11 @@ class ProspectFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'email_address' => fake()->word(),
-            'phone_number' => fake()->phoneNumber(),
-            'description' => fake()->text(),
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'email_address' => $this->faker->unique()->safeEmail,
+            'phone_number' => $this->faker->phoneNumber,
+            'description' => $this->faker->paragraph,
         ];
     }
 }

@@ -23,13 +23,12 @@ class EventFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'duration' => fake()->numberBetween(-10000, 10000),
-            'date_time' => fake()->dateTime(),
-            'location' => fake()->word(),
-            'type' => fake()->word(),
+            'name' => $this->faker->sentence(4),
+            'duration' => $this->faker->numberBetween(30, 120),
+            'date_time' => $this->faker->dateTimeBetween('now', '+1 month'),
+            'location' => $this->faker->address,
+            'type' => $this->faker->word,
             'instructor_id' => Instructor::factory(),
-            'member_id' => Member::factory(),
         ];
     }
 }

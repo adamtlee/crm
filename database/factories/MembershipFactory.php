@@ -20,9 +20,11 @@ class MembershipFactory extends Factory
      */
     public function definition(): array
     {
+        $membershipNames = ['Muay Thai', 'Boxing', 'Kickboxing', 'MMA', 'Brazilian Jiu Jitsu'];
+
         return [
-            'name' => fake()->name(),
-            'description' => fake()->text(),
+            'name' => $this->faker->randomElement($membershipNames),
+            'description' => $this->faker->paragraph,
         ];
     }
 }

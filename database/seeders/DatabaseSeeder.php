@@ -18,13 +18,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create Memberships
+        Membership::factory()->count(5)->create();
 
-        Membership::factory(10)->create();
-        Prospect::factory(10)->create();
-        Member::factory(10)->create();
-        Instructor::factory(10)->create();
-        Event::factory(10)->create();
+        // Create Instructors
+        Instructor::factory()->count(10)->create();
+
+        // Create Members
+        Member::factory()->count(50)->create();
+
+        // Create Prospects
+        Prospect::factory()->count(30)->create();
+
+        // Create Events
+        Event::factory()->count(20)->create()->each(function ($event) {
+            $members = Member::factory()->count(3)->create(['membership_id' => Membership::inRandomOrder()->first()->id]);
+            $event->members()->attach($members);
+
+            //Populate the member_id column with one of the created members
+            $event->member_id = $members->random()->id;
+            $event->save();
+        });
+
+        
 
 
         User::factory()->create([
