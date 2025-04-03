@@ -14,9 +14,9 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Home') }}</flux:navlist.item>
-                    <flux:navlist.item icon="user-circle" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Membership') }}</flux:navlist.item>
-                    <flux:navlist.item icon="academic-cap" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Attendance') }}</flux:navlist.item>
-                    <flux:navlist.item icon="wallet" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Billing Information') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user-circle" :href="route('dashboard')" :current="request()->routeIs('dashboard') && request()->query('tab') === 'membership'" wire:navigate>{{ __('Membership') }}</flux:navlist.item>
+                    <flux:navlist.item icon="academic-cap" :href="route('dashboard')" :current="request()->routeIs('dashboard') && request()->query('tab') === 'attendance'" wire:navigate>{{ __('Attendance') }}</flux:navlist.item>
+                    <flux:navlist.item icon="wallet" :href="route('dashboard')" :current="request()->routeIs('dashboard') && request()->query('tab') === 'billing'" wire:navigate>{{ __('Billing Information') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -27,8 +27,8 @@
             <flux:spacer />
 
             <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="#" target="_blank">
-                {{ __('Repository') }}
+                <flux:navlist.item icon="question-mark-circle" href="#" target="_blank">
+                {{ __('Support') }}
                 </flux:navlist.item>
 
                 <flux:navlist.item icon="book-open-text" href="#" target="_blank">

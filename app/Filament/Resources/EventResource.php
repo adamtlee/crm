@@ -35,10 +35,12 @@ class EventResource extends Resource
                 Forms\Components\TextInput::make('type')
                     ->required(),
                 Forms\Components\Select::make('instructor_id')
-                    ->relationship('instructor', 'id')
+                    ->relationship('instructor', 'first_name')
+                    ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->first_name} {$record->last_name}")
                     ->required(),
                 Forms\Components\Select::make('member_id')
-                    ->relationship('member', 'id')
+                    ->relationship('member', 'first_name')
+                    ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->first_name} {$record->last_name}")
                     ->required(),
             ]);
     }
@@ -60,11 +62,13 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('type')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('instructor.first_name')
-                    ->numeric()
-                    ->sortable(),
+                    ->label('Instructor')
+                    ->formatStateUsing(fn ($record) => "{$record->instructor->first_name} {$record->instructor->last_name}")
+                    ->searchable(['instructor.first_name', 'instructor.last_name']),
                 Tables\Columns\TextColumn::make('member.first_name')
-                    ->numeric()
-                    ->sortable(),
+                    ->label('Member')
+                    ->formatStateUsing(fn ($record) => "{$record->member->first_name} {$record->member->last_name}")
+                    ->searchable(['member.first_name', 'member.last_name']),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
