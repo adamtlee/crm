@@ -33,4 +33,12 @@ class Membership extends Model
     {
         return $this->hasMany(Member::class);
     }
+
+    /**
+     * Get the invoices for the membership.
+     */
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }
