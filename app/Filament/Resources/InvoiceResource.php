@@ -17,7 +17,7 @@ class InvoiceResource extends Resource
 {
     protected static ?string $model = Invoice::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -40,15 +40,19 @@ class InvoiceResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('subtotal')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('$'),
                 Forms\Components\TextInput::make('tax_amount')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('$'),
                 Forms\Components\TextInput::make('discount_amount')
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('$'),
                 Forms\Components\TextInput::make('total_amount')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('$'),
                 Forms\Components\TextInput::make('status')
                     ->required(),
                 Forms\Components\Textarea::make('notes')
@@ -83,15 +87,19 @@ class InvoiceResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('subtotal')
                     ->numeric()
+                    ->money('USD')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tax_amount')
                     ->numeric()
+                    ->money('USD')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('discount_amount')
                     ->numeric()
+                    ->money('USD')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('total_amount')
                     ->numeric()
+                    ->money('USD')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->searchable(),
