@@ -83,9 +83,11 @@
             .main-content {
                 flex: 1;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 padding: 2rem;
+                gap: 1rem;
             }
             
             .center-text {
@@ -93,9 +95,22 @@
                 font-weight: 700;
                 text-align: center;
                 color: #1b1b18;
+                margin: 0;
             }
             
             .dark .center-text {
+                color: #EDEDEC;
+            }
+
+            .tagline {
+                font-size: 1.25rem;
+                font-weight: 500;
+                text-align: center;
+                color: #1b1b18;
+                opacity: 0.8;
+            }
+
+            .dark .tagline {
                 color: #EDEDEC;
             }
 
@@ -111,6 +126,14 @@
                 a {
                     padding: 0.5rem 0.75rem;
                     font-size: 0.8125rem;
+                }
+
+                .center-text {
+                    font-size: 2.5rem;
+                }
+
+                .tagline {
+                    font-size: 1rem;
                 }
             }
         </style>
@@ -144,6 +167,9 @@
         <div class="main-content">
             <div class="center-text">
                 <strong>BASIC</strong>
+            </div>
+            <div class="tagline">
+                Professional Relationships Simplified.
             </div>
         </div>
     </body>
