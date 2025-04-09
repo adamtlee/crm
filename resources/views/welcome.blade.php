@@ -167,10 +167,10 @@
         <div class="main-content">
             <div class="center-text">
                 <strong>BASIC</strong>
-            </div>
+                </div>
             <div class="tagline">
                 Professional Relationships Simplified.
-            </div>
+                </div>
         </div>
     </body>
 </html>

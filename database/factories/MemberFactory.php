@@ -29,7 +29,7 @@ class MemberFactory extends Factory
             'phone_number' => $this->faker->phoneNumber,
             'emergency_contact_name' => $this->faker->name,
             'emergency_contact_phone_number' => $this->faker->phoneNumber,
-            'membership_id' => Membership::factory(), // Creates a Membership and gets the ID
+            'membership_id' => null, // We'll set this in the seeder
         ];
     }
 }
