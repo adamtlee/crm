@@ -14,9 +14,9 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Home') }}</flux:navlist.item>
-                    <flux:navlist.item icon="user-circle" :href="route('dashboard')" :current="request()->routeIs('dashboard') && request()->query('tab') === 'membership'" wire:navigate>{{ __('Membership') }}</flux:navlist.item>
-                    <flux:navlist.item icon="academic-cap" :href="route('dashboard')" :current="request()->routeIs('dashboard') && request()->query('tab') === 'attendance'" wire:navigate>{{ __('Attendance') }}</flux:navlist.item>
-                    <flux:navlist.item icon="wallet" :href="route('dashboard')" :current="request()->routeIs('dashboard') && request()->query('tab') === 'billing'" wire:navigate>{{ __('Billing Information') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user-circle" :href="route('dashboard.membership')" :current="request()->routeIs('dashboard.membership')" wire:navigate>{{ __('Membership') }}</flux:navlist.item>
+                    <flux:navlist.item icon="academic-cap" :href="route('dashboard.attendance')" :current="request()->routeIs('dashboard.attendance')" wire:navigate>{{ __('Attendance') }}</flux:navlist.item>
+                    <flux:navlist.item icon="wallet" :href="route('dashboard.billing')" :current="request()->routeIs('dashboard.billing')" wire:navigate>{{ __('Billing Information') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
