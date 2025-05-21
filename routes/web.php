@@ -27,6 +27,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard.billing');
     })->name('dashboard.billing');
 
+    Route::get('dashboard/video', function () {
+        $videos = \App\Models\Video::all();
+        return view('dashboard.video', compact('videos'));
+    })->name('dashboard.video');
+
     // Settings routes
     Route::redirect('settings', 'settings/profile');
     Route::resource('prospects', ProspectController::class);
