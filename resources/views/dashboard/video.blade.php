@@ -7,8 +7,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse($videos as $video)
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                    <a href="{{ $video->url }}" target="_blank"> 
-                        <img src="https://picsum.photos/id/237/200/300" alt="Thumbnail" class="w-full h-32 object-cover rounded-lg">
+                    <a href="{{ $video->url }}" target="_blank">
+                        <img src="{{ $video->thumbnail_url ?? 'https://via.placeholder.com/320x180' }}" alt="Thumbnail" class="w-full h-48 object-cover">
                     </a>
                     <div class="p-4">
                         <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ $video->title }}</h2>
