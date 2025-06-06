@@ -26,6 +26,7 @@ class Member extends Model
         'emergency_contact_name',
         'emergency_contact_phone_number',
         'membership_id',
+        'user_id',
     ];
 
     /**
@@ -37,6 +38,7 @@ class Member extends Model
         'id' => 'integer',
         'birth_date' => 'date',
         'membership_id' => 'integer',
+        'user_id' => 'integer',
     ];
 
     public function membership(): BelongsTo
@@ -55,5 +57,10 @@ class Member extends Model
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

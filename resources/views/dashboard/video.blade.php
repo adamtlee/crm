@@ -8,7 +8,7 @@
             @forelse($videos as $video)
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                     <a href="{{ $video->url }}" target="_blank">
-                        <img src="{{ $video->thumbnail_url ?? 'https://via.placeholder.com/320x180' }}" alt="Thumbnail" class="w-full h-48 object-cover">
+                        <img src="{{ $video->thumbnail_url ?? 'https://via.placeholder.com/320x180' }}" alt="{{ $video->title }}" class="w-full h-48 object-cover">
                     </a>
                     <div class="p-4">
                         <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ $video->title }}</h2>

@@ -9,12 +9,13 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $videos = Video::all(); 
-        return view('videos.index', compact('videos'));
+        $videos = Video::all();
+        return view('dashboard.video', compact('videos'));
     }
+
     public function show(string $id)
     {
-        $video = Video::findOrFail($id); 
+        $video = Video::findOrFail($id);
         return view('videos.show', compact('video'));
     }
 }

@@ -15,31 +15,38 @@ Route::get('/', function (){
     ], 200);
 });
 
-// Video routes
-Route::get('/videos', [VideoController::class, 'index']);
-Route::get('/videos/{id}', [VideoController::class, 'show']);
+// Member authentication routes
+Route::post('/members/register', [MemberController::class, 'register']);
+Route::post('/members/login', [MemberController::class, 'login']);
 
-// Member routes
-Route::get('/members', [MemberController::class, 'index']);
-Route::get('/members/{id}', [MemberController::class, 'show']);
+// Protected routes
+Route::middleware(['auth', 'web'])->group(function () {
+    // Video routes
+    Route::get('/videos', [VideoController::class, 'index']);
+    Route::get('/videos/{id}', [VideoController::class, 'show']);
 
-// Instructor routes
-Route::get('/instructors', [InstructorController::class, 'index']);
-Route::get('/instructors/{id}', [InstructorController::class, 'show']);
+    // Member routes
+    Route::get('/members', [MemberController::class, 'index']);
+    Route::get('/members/{id}', [MemberController::class, 'show']);
 
-// Event routes
-Route::get('/events', [EventController::class, 'index']);
-Route::get('/events/{id}', [EventController::class, 'show']);
+    // Instructor routes
+    Route::get('/instructors', [InstructorController::class, 'index']);
+    Route::get('/instructors/{id}', [InstructorController::class, 'show']);
 
-// Invoice routes
-Route::get('/invoices', [InvoiceController::class, 'index']);
-Route::get('/invoices/{id}', [InvoiceController::class, 'show']);
+    // Event routes
+    Route::get('/events', [EventController::class, 'index']);
+    Route::get('/events/{id}', [EventController::class, 'show']);
 
-// Prospect routes
-Route::get('/prospects', [ProspectController::class, 'index']);
-Route::get('/prospects/{id}', [ProspectController::class, 'show']);
+    // Invoice routes
+    Route::get('/invoices', [InvoiceController::class, 'index']);
+    Route::get('/invoices/{id}', [InvoiceController::class, 'show']);
 
-// Auth routes
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    // Prospect routes
+    Route::get('/prospects', [ProspectController::class, 'index']);
+    Route::get('/prospects/{id}', [ProspectController::class, 'show']);
+
+    // Auth routes
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 });
