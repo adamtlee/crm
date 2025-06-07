@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\InstructorController;
 use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\InvoiceController;
 use App\Http\Controllers\Api\ProspectController;
+use App\Http\Controllers\Api\MembershipController;
 
 Route::get('/', function (){ 
     return response()->json([
@@ -49,4 +50,7 @@ Route::middleware(['auth', 'web'])->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
+    // Membership routes
+    Route::apiResource('memberships', MembershipController::class);
 });
