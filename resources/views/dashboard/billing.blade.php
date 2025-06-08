@@ -20,18 +20,21 @@
                                                 Date
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                                Due Date
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                                 Amount
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                                 Status
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                                Due Date
+                                                Type
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                                        @forelse(auth()->user()->invoices ?? [] as $invoice)
+                                        @forelse(auth()->user()->member->invoices ?? [] as $invoice)
                                             <tr>
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -41,6 +44,11 @@
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="text-sm text-gray-900 dark:text-gray-100">
                                                         {{ \Carbon\Carbon::parse($invoice->invoice_date)->format('M d, Y') }}
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 dark:text-gray-100">
+                                                        {{ \Carbon\Carbon::parse($invoice->due_date)->format('M d, Y') }}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
@@ -56,13 +64,19 @@
                                                         {{ ucfirst($invoice->status) }}
                                                     </span>
                                                 </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
-                                                    {{ \Carbon\Carbon::parse($invoice->due_date)->format('M d, Y') }}
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 dark:text-gray-100">
+                                                        @if($invoice->membership_id)
+                                                            <span class="text-blue-600 dark:text-blue-400">{{ $invoice->membership->name }}</span>
+                                                        @elseif($invoice->event_id)
+                                                            <span class="text-purple-600 dark:text-purple-400">{{ $invoice->event->name }}</span>
+                                                        @endif
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="5" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 text-center">
+                                                <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 text-center">
                                                     No invoices found
                                                 </td>
                                             </tr>

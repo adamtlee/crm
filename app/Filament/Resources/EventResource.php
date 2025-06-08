@@ -64,11 +64,11 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('instructor.first_name')
                     ->label('Instructor')
                     ->formatStateUsing(fn ($record) => "{$record->instructor->first_name} {$record->instructor->last_name}")
-                    ->searchable(['instructor.first_name', 'instructor.last_name']),
+                    ->searchable(['instructors.first_name', 'instructors.last_name']),
                 Tables\Columns\TextColumn::make('member.first_name')
                     ->label('Member')
                     ->formatStateUsing(fn ($record) => "{$record->member->first_name} {$record->member->last_name}")
-                    ->searchable(['member.first_name', 'member.last_name']),
+                    ->searchable(['members.first_name', 'members.last_name']),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
