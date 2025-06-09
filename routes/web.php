@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProspectController; 
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\Dashboard\BillingController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -23,9 +24,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard.attendance');
     })->name('dashboard.attendance');
 
-    Route::get('dashboard/billing', function () {
-        return view('dashboard.billing');
-    })->name('dashboard.billing');
+    Route::get('dashboard/billing', [BillingController::class, 'index'])->name('dashboard.billing');
 
     Route::get('dashboard/video', [VideoController::class, 'index'])->name('dashboard.video');
 

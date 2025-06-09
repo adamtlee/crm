@@ -1,9 +1,10 @@
 <x-layouts.app :title="__('Dashboard - Billing')">
     <div class="flex h-full w-full flex-1 flex-col gap-4 p-4">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-semibold">Billing & Invoices</h1>
+            <h1 class="text-2xl font-semibold">Invoices</h1>
         </div>
 
+        <!-- Existing Invoices Table -->
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md">
             <div class="p-6">
                 <div class="flex flex-col">
