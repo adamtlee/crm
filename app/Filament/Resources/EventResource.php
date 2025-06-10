@@ -31,9 +31,9 @@ class EventResource extends Resource
                     ->numeric(),
                 Forms\Components\DateTimePicker::make('date_time')
                     ->required(),
-                Forms\Components\TextInput::make('location')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Select::make('location')
+                    ->relationship('location', 'name')
+                    ->required(),
                 Forms\Components\TextInput::make('type')
                     ->required()
                     ->maxLength(255),
@@ -64,7 +64,8 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('date_time')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('location')
+                Tables\Columns\TextColumn::make('location.name')
+                    ->label('Location')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type')
                     ->searchable(),

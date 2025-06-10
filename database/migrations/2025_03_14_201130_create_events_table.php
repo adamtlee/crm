@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('duration');
             $table->dateTime('date_time');
-            $table->string('location');
+            $table->foreignId('location_id')->constrained('locations');
             $table->string('type');
             $table->timestamps();
         });
