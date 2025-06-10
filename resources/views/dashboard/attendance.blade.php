@@ -69,7 +69,9 @@
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="text-sm text-gray-900 dark:text-gray-100">
-                                                        {{ $event->instructor->first_name }} {{ $event->instructor->last_name }}
+                                                        @foreach ($event->instructors as $instructor)
+                                                            {{ $instructor->first_name }} {{ $instructor->last_name }}@if (!$loop->last), @endif
+                                                        @endforeach
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">

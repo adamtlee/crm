@@ -17,30 +17,37 @@ class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('duration')
                     ->required()
                     ->numeric(),
                 Forms\Components\DateTimePicker::make('date_time')
                     ->required(),
                 Forms\Components\TextInput::make('location')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('type')
-                    ->required(),
-                Forms\Components\Select::make('instructor_id')
-                    ->relationship('instructor', 'first_name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Select::make('instructors')
+                    ->relationship('instructors', 'first_name')
                     ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->first_name} {$record->last_name}")
+                    ->multiple()
+                    ->preload()
                     ->required(),
-                Forms\Components\Select::make('member_id')
-                    ->relationship('member', 'first_name')
+                Forms\Components\Select::make('members')
+                    ->relationship('members', 'first_name')
                     ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->first_name} {$record->last_name}")
+                    ->multiple()
+                    ->preload()
                     ->required(),
             ]);
     }
@@ -61,14 +68,12 @@ class EventResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('instructor.first_name')
-                    ->label('Instructor')
-                    ->formatStateUsing(fn ($record) => "{$record->instructor->first_name} {$record->instructor->last_name}")
-                    ->searchable(['instructors.first_name', 'instructors.last_name']),
-                Tables\Columns\TextColumn::make('member.first_name')
-                    ->label('Member')
-                    ->formatStateUsing(fn ($record) => "{$record->member->first_name} {$record->member->last_name}")
-                    ->searchable(['members.first_name', 'members.last_name']),
+                Tables\Columns\TextColumn::make('participant_count')
+                    ->label('Participants')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('instructor_count')
+                    ->label('Instructors')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -94,7 +99,8 @@ class EventResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\InstructorsRelationManager::class,
+            RelationManagers\MembersRelationManager::class,
         ];
     }
 

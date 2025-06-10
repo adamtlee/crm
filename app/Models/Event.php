@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Event extends Model
@@ -22,8 +21,6 @@ class Event extends Model
         'date_time',
         'location',
         'type',
-        'instructor_id',
-        'member_id',
     ];
 
     /**
@@ -34,22 +31,41 @@ class Event extends Model
     protected $casts = [
         'id' => 'integer',
         'date_time' => 'datetime',
-        'instructor_id' => 'integer',
-        'member_id' => 'integer',
     ];
 
-    public function instructor(): BelongsTo
-    {
-        return $this->belongsTo(Instructor::class);
-    }
-
-    public function member(): BelongsTo
-    {
-        return $this->belongsTo(Member::class);
-    }
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'participant_count',
+        'instructor_count',
+    ];
 
     public function members(): BelongsToMany
     {
         return $this->belongsToMany(Member::class);
+    }
+
+    public function instructors(): BelongsToMany
+    {
+        return $this->belongsToMany(Instructor::class);
+    }
+
+    /**
+     * Get the number of participants in the event.
+     */
+    public function getParticipantCountAttribute(): int
+    {
+        return $this->members()->count();
+    }
+
+    /**
+     * Get the number of instructors in the event.
+     */
+    public function getInstructorCountAttribute(): int
+    {
+        return $this->instructors()->count();
     }
 }

@@ -13,13 +13,9 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('events', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('duration');
-            $table->dateTime('date_time');
-            $table->string('location');
-            $table->string('type');
+        Schema::create('event_instructor', function (Blueprint $table) {
+            $table->foreignId('instructor_id')->constrained()->onDelete('cascade');
+            $table->foreignId('event_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('event_instructor');
     }
-};
+}; 

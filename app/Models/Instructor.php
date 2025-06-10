@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Instructor extends Model
 {
@@ -34,8 +34,11 @@ class Instructor extends Model
         'birth_date' => 'date',
     ];
 
-    public function events(): HasMany
+    /**
+     * Get the events that the instructor is assigned to.
+     */
+    public function events(): BelongsToMany
     {
-        return $this->hasMany(Event::class);
+        return $this->belongsToMany(Event::class);
     }
 }

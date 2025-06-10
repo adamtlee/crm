@@ -5,8 +5,6 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Event;
-use App\Models\Instructor;
-use App\Models\Member;
 
 class EventFactory extends Factory
 {
@@ -28,7 +26,6 @@ class EventFactory extends Factory
             'date_time' => $this->faker->dateTimeBetween('now', '+1 month'),
             'location' => $this->faker->address,
             'type' => $this->faker->word,
-            'instructor_id' => Instructor::factory(),
         ];
     }
 }

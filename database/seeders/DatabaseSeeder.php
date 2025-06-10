@@ -39,15 +39,16 @@ class DatabaseSeeder extends Seeder
         // Create Prospects
         Prospect::factory()->count(30)->create();
 
-        // Create Events with proper member assignment
-        foreach ($members->random(20) as $member) {
-            $event = Event::factory()->create([
-                'member_id' => $member->id,
-            ]);
-            
+        // Create Events and attach members and instructors
+        $instructors = Instructor::all();
+        for ($i = 0; $i < 20; $i++) {
+            $event = Event::factory()->create();
             // Attach 3 random members to the event
             $eventMembers = $members->random(3);
             $event->members()->attach($eventMembers);
+            // Attach 2 random instructors to the event
+            $eventInstructors = $instructors->random(2);
+            $event->instructors()->attach($eventInstructors);
         }
 
         // Create Videos
