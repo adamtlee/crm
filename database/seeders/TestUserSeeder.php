@@ -26,6 +26,7 @@ class TestUserSeeder extends Seeder
             ['name' => 'Basic'],
             [
                 'description' => 'Basic membership plan',
+                'price' => 50.00,
             ]
         );
 

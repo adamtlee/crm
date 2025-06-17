@@ -24,10 +24,17 @@ class MembershipResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255)
+                    ->unique(ignoreRecord: true)
+                    ->columnSpanFull(),
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
+                Forms\Components\TextInput::make('price')
+                    ->required()
+                    ->numeric()
+                    ->prefix('$'),
             ]);
     }
 
@@ -38,6 +45,9 @@ class MembershipResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('price')
+                    ->money('USD')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
