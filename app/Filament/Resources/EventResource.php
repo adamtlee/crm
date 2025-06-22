@@ -31,7 +31,7 @@ class EventResource extends Resource
                     ->numeric(),
                 Forms\Components\DateTimePicker::make('date_time')
                     ->required(),
-                Forms\Components\Select::make('location')
+                Forms\Components\Select::make('location_id')
                     ->relationship('location', 'name')
                     ->required(),
                 Forms\Components\TextInput::make('type')

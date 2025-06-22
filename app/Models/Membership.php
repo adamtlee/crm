@@ -19,6 +19,7 @@ class Membership extends Model
         'name',
         'description',
         'price',
+        'currency',
     ];
 
     /**
@@ -28,6 +29,7 @@ class Membership extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'price' => 'decimal:2',
     ];
 
     public function members(): HasMany
@@ -41,5 +43,20 @@ class Membership extends Model
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    /**
+     * Get the formatted price with currency symbol.
+     */
+    public function getFormattedPriceAttribute(): string
+    {
+        $symbols = [
+            'USD' => '$',
+            'THB' => '฿',
+        ];
+
+        $symbol = $symbols[$this->currency] ?? $this->currency;
+        
+        return $symbol . number_format($this->price, 2);
     }
 }

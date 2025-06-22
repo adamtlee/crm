@@ -20,7 +20,7 @@ class Event extends Model
         'name',
         'duration',
         'date_time',
-        'location',
+        'location_id',
         'type',
     ];
 

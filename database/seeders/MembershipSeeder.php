@@ -18,16 +18,25 @@ class MembershipSeeder extends Seeder
                 'name' => 'Fighter class - daily pass',
                 'description' => 'Professional Fighters Only',
                 'price' => 700.00,
+                'currency' => 'THB',
             ],
             [
                 'name' => 'Muay Thai class - daily pass',
                 'description' => 'All Levels Muay Thai class',
                 'price' => 600.00,
+                'currency' => 'THB',
             ],
             [
                 'name' => 'Private Training Session',
                 'description' => 'Individual Private Training Session',
                 'price' => 1200.00,
+                'currency' => 'THB',
+            ],
+            [
+                'name' => 'Private Training Session - Kru Gae',
+                'description' => 'Private Training Session with Kru Gae',
+                'price' => 2400.00,
+                'currency' => 'THB',
             ],
         ];
 
@@ -36,6 +45,7 @@ class MembershipSeeder extends Seeder
                 'name' => $membership['name'],
                 'description' => $membership['description'],
                 'price' => $membership['price'],
+                'currency' => $membership['currency'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

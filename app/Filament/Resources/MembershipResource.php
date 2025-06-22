@@ -31,10 +31,26 @@ class MembershipResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->prefix('$'),
+                Forms\Components\Grid::make(2)
+                    ->schema([
+                        Forms\Components\Select::make('currency')
+                            ->options([
+                                'USD' => 'USD ($)',
+                                'THB' => 'THB (฿)',
+                            ])
+                            ->default('THB')
+                            ->required()
+                            ->reactive()
+                            ->live(),
+                        Forms\Components\TextInput::make('price')
+                            ->required()
+                            ->numeric()
+                            ->prefix(function ($get) {
+                                $currency = $get('currency');
+                                return $currency === 'THB' ? '฿' : '$';
+                            })
+                            ->live(),
+                    ]),
             ]);
     }
 
@@ -45,8 +61,15 @@ class MembershipResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('currency')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'USD' => 'gray',
+                        'THB' => 'success',
+                        default => 'gray',
+                    }),
                 Tables\Columns\TextColumn::make('price')
-                    ->money('USD')
+                    ->money(fn ($record) => $record->currency ?? 'USD')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
