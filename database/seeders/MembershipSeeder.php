@@ -15,34 +15,19 @@ class MembershipSeeder extends Seeder
     {
         $memberships = [
             [
-                'name' => 'MMA',
-                'description' => 'Mixed Martial Arts program combining striking and grappling techniques. Learn the complete skillset needed for cage fighting.',
-                'price' => 100.00,
+                'name' => 'Fighter class - daily pass',
+                'description' => 'Professional Fighters Only',
+                'price' => 700.00,
             ],
             [
-                'name' => 'Boxing',
-                'description' => 'Traditional boxing program focusing on footwork, punching combinations, and defensive techniques.',
-                'price' => 90.00,
+                'name' => 'Muay Thai class - daily pass',
+                'description' => 'All Levels Muay Thai class',
+                'price' => 600.00,
             ],
             [
-                'name' => 'Kickboxing',
-                'description' => 'Combines boxing with kicking techniques. Perfect for developing striking skills with both hands and feet.',
-                'price' => 95.00,
-            ],
-            [
-                'name' => 'Muay Thai',
-                'description' => 'The art of eight limbs. Learn traditional Thai boxing including punches, kicks, elbows, and knee strikes.',
-                'price' => 110.00,
-            ],
-            [
-                'name' => 'Brazilian Jiu-Jitsu',
-                'description' => 'Ground fighting and submission grappling. Master the art of controlling and submitting opponents on the ground.',
-                'price' => 105.00,
-            ],
-            [
-                'name' => 'Wrestling',
-                'description' => 'Focus on takedowns, throws, and controlling opponents. Develop strength and explosive power through wrestling techniques.',
-                'price' => 85.00,
+                'name' => 'Private Training Session',
+                'description' => 'Individual Private Training Session',
+                'price' => 1200.00,
             ],
         ];
 

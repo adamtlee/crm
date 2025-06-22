@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        /*
         // Create only the specified memberships
         $this->call(MembershipSeeder::class);
 
@@ -56,6 +57,7 @@ class DatabaseSeeder extends Seeder
 
         // Create Invoices
         $this->call(InvoiceSeeder::class);
+        */
 
         // Create a test user for development only
         User::factory()->create([
@@ -64,8 +66,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('Password1'),
         ]);
 
+             // Create a test user for development only
+             User::factory()->create([
+                'name' => 'superbon',
+                'email' => 'superbon@mail.com',
+                'password' => bcrypt('Password1'),
+            ]);
+
         $this->call([
             TestUserSeeder::class,
+            InstructorSeeder::class,
         ]);
     }
 }
