@@ -20,12 +20,20 @@ class ProspectFactory extends Factory
      */
     public function definition(): array
     {
+        $firstName = $this->faker->firstName;
+        $lastName = $this->faker->lastName;
+        $lastInitial = strtolower(substr($lastName, 0, 1));
+        $email = strtolower($firstName) . $lastInitial . '@doxtera.com';
+        
+        // Generate a contact date between 2024-01-01 and 2025-06-28
+        $contactDate = $this->faker->dateTimeBetween('2024-01-01', '2025-06-28');
+        
         return [
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'email_address' => $this->faker->unique()->safeEmail,
-            'phone_number' => $this->faker->phoneNumber,
-            'description' => $this->faker->paragraph,
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'email_address' => $email,
+            'phone_number' => '000-000-0000',
+            'description' => 'Contact date: ' . $contactDate->format('Y-m-d'),
         ];
     }
 }
