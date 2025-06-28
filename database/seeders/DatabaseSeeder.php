@@ -78,6 +78,7 @@ class DatabaseSeeder extends Seeder
             InstructorSeeder::class,
             ProspectSeeder::class,
             MemberSeeder::class,
+            EventSeeder::class,
         ]);
     }
 }

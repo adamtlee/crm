@@ -34,6 +34,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+
+    Route::get('invoices/export-csv', [\App\Http\Controllers\Api\InvoiceController::class, 'exportCsv'])->name('invoices.export.csv');
 });
 
 require __DIR__.'/auth.php';
