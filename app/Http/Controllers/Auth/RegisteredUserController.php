@@ -38,7 +38,11 @@ class RegisteredUserController extends Controller
         // Get or create a basic membership
         $membership = Membership::firstOrCreate(
             ['name' => 'Basic'],
-            ['description' => 'Basic membership plan']
+            [
+                'description' => 'Basic membership plan',
+                'price' => 0.00,
+                'currency' => 'USD',
+            ]
         );
 
         // Create the user
