@@ -77,6 +77,7 @@ class DatabaseSeeder extends Seeder
             TestUserSeeder::class,
             InstructorSeeder::class,
             ProspectSeeder::class,
+            MemberSeeder::class,
         ]);
     }
 }
